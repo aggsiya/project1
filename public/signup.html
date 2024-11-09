@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/signup.css" />
+    <title>Garden Gallery Signup</title>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 class="signup-title">Create an Account</h1>
+        <form
+            id="signupForm"
+            action="#"
+            method="POST"
+            onsubmit="return validateForm(event)"
+            class="signup-form"
+        >
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+                <div id="nameError" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required />
+                <div id="emailError" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required />
+                <div id="phoneError" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required />
+                <div id="locationError" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Gardening Experience:</label>
+                <select id="experience" name="experience" required>
+                    <option value="">Select your experience level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                </select>
+                <div id="experienceError" class="error"></div>
+            </div>
+
+            <input type="submit" value="Submit" class="signup-btn" />
+        </form>
+    </div>
+
+    <script>
+        // Form validation function
+        function validateForm(event) {
+            event.preventDefault();
+            clearErrors();
+
+            let isValid = true;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const location = document.getElementById("location").value;
+            const experience = document.getElementById("experience").value;
+
+            if (name.trim() === "") {
+                isValid = false;
+                document.getElementById("nameError").textContent = "Name is required.";
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                document.getElementById("emailError").textContent = "Please enter a valid email address.";
+            }
+
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                isValid = false;
+                document.getElementById("phoneError").textContent = "Please enter a valid 10-digit phone number.";
+            }
+
+            if (location.trim() === "") {
+                isValid = false;
+                document.getElementById("locationError").textContent = "Location is required.";
+            }
+
+            if (experience === "") {
+                isValid = false;
+                document.getElementById("experienceError").textContent = "Please select your gardening experience.";
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+                document.getElementById("signupForm").submit();
+            }
+
+            return false;
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll(".error");
+            errorElements.forEach((element) => (element.textContent = ""));
+        }
+    </script>
+</body>
+</html>

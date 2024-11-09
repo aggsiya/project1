@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/gallery1.css">
+    <title>Garden Gallery</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>GardenVerse</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="gallery1.html">Gallery</a></li>
+                    <li><a href="home.html">Blog</a></li>   
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="signup.html"class="btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Grow Your Dream Garden, Virtually!</h1>
+            <p>Explore, design, and nurture your garden from the comfort of home.</p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Garden Inspirations</h2>
+        <div class="filter">
+            <input type="text" placeholder="Search Images..." id="search-input">
+            <button onclick="filterImages()">Filter</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="pic.jpg" alt="Garden 1">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="pic1.jpg" alt="Garden 2">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="pic2.jpg" alt="Garden 3">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="pic4.jpg" alt="Garden 4">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="pic5.jpg" alt="Garden 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="caption"></div>
+    </div> -->
+
+    <footer>
+        <p>© 2024 Virtual Gardening. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-image");
+            const captionText = document.getElementById("caption");
+            modal.style.display = "block";
+            modalImg.src = element.children[0].src;
+            captionText.innerHTML = element.children[0].alt;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+
+        function filterImages() {
+            const input = document.getElementById("search-input").value.toLowerCase();
+            const items = document.querySelectorAll(".gallery-item");
+            items.forEach(item => {
+                const imgAlt = item.children[0].alt.toLowerCase();
+                if (imgAlt.includes(input)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

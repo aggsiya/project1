@@ -1,0 +1,158 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Header - Consistent with Style.css */
+.header {
+    background-color: #1e1e1e;
+    padding: 20px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 2em;
+    color: #76ff03; /* Bright green for contrast */
+}
+
+/* Navbar */
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #76ff03; /* Highlight color on hover */
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 40px 20px;
+}
+
+.gallery h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #76ff03; /* Bright green to match header */
+    margin-bottom: 20px;
+}
+
+.filter {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #76ff03;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.filter input::placeholder {
+    color: #e0e0e0;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #e0e0e0;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Button Styles */
+.btn, .cta-button {
+    background-color: #76ff03; /* Bright green */
+    color: #121212;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover, .cta-button:hover {
+    background-color: #64dd17; /* Darker green on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: #76ff03;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+    }
+
+    .filter input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+}
